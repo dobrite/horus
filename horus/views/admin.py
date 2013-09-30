@@ -56,7 +56,7 @@ class AdminController(BaseController):
             self.db.add(user)
 
             FlashMessage(self.request, self.Str.admin_create_user_done,
-                'success')
+                kind='success')
 
             return HTTPFound(
                 location=self.request.route_url('admin_users_index')

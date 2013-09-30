@@ -9,6 +9,7 @@ from horus.views            import BaseController
 from horus.schemas          import AdminUserSchema
 from horus.forms            import HorusForm
 from horus.resources        import RootFactory
+from horus.lib              import FlashMessage
 
 
 @view_defaults(permission='group:admin')

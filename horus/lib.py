@@ -23,7 +23,7 @@ def render_flash_messages(request):
         else bootstrap_msg(m) for m in msgs])
 
 
-QUEUES = set(['error', 'warning', 'info', 'success', ''])
+QUEUES = set(['danger', 'warning', 'info', 'success', ''])
 
 def render_flash_messages_from_queues(request):
     '''This method is for compatibility with other systems only.
@@ -44,7 +44,7 @@ def render_flash_messages_from_queues(request):
 
 
 def bootstrap_msg(plain=None, rich=None, kind='warning'):
-    return '<div class="alert alert-{0}{1}"><button type="button" ' \
+    return '<div class="alert alert-{0}{1} alert-dismissable"><button type="button" ' \
         'class="close" data-dismiss="alert">×</button>{2}</div>\n'.format(
         escape(kind), ' alert-block' if rich else '', rich or escape(plain))
 
@@ -63,7 +63,7 @@ class FlashMessage(object):
         self.kind = state.get('kind')
         self.plain = state.get('plain')
         self.rich = state.get('rich')
-    KINDS = set(['error', 'warning', 'info', 'success'])
+    KINDS = set(['danger', 'warning', 'info', 'success'])
 
     def __init__(self, request, plain=None, rich=None, kind='warning',
                  allow_duplicate=False):

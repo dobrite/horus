@@ -216,7 +216,7 @@ class AuthController(BaseController):
             try:
                 user = self.check_credentials(username, password)
             except AuthenticationFailure as e:
-                FlashMessage(self.request, str(e), kind='error')
+                FlashMessage(self.request, str(e), kind='danger')
                 return {
                     'form': self.form.render(appstruct=captured),
                     'errors': [e]
@@ -494,7 +494,7 @@ class ProfileController(BaseController):
                 if email_user:
                     if email_user.id != user.id:
                         FlashMessage(self.request,
-                            _('That e-mail is already used.'), kind='error')
+                            _('That e-mail is already used.'), kind='danger')
                         return HTTPFound(location=self.request.url)
 
                 user.email = email

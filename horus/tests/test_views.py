@@ -171,7 +171,7 @@ class TestAuthController(UnitTestBase):
         with patch('horus.views.FlashMessage') as FlashMessage:
             view.login()
             FlashMessage.assert_called_with(request,
-                "Invalid username or password.", kind="error")
+                "Invalid username or password.", kind="danger")
 
     def test_login_succeeds(self):
         """Make sure we can log in."""
@@ -239,7 +239,7 @@ class TestAuthController(UnitTestBase):
             view.login()
             FlashMessage.assert_called_with(request,
                 'Your account is not active, please check your e-mail.',
-                kind='error')
+                kind='danger')
 
     def test_logout(self):
         from horus.strings      import UIStringsBase as Str
